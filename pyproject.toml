@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "video-depth-anything"
+version = "0.1.0"
+description = "Video Depth Anything - Consistent depth estimation for videos"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy<2",
+    "opencv-python",
+    "matplotlib",
+    "pillow",
+    "imageio>=2.37.0",
+    "imageio-ffmpeg>=0.4.7",
+    "xformers>=0.0.23",
+    "einops>=0.4.1",
+    "easydict",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+video = [
+    "decord",
+]
+exr = [
+    "OpenEXR>=3.3.1",
+]
+pointcloud = [
+    "open3d",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/DepthAnything/Video-Depth-Anything"
+
+[tool.setuptools]
+packages = ["video_depth_anything", "video_depth_anything.dinov2_layers", "video_depth_anything.motion_module", "video_depth_anything.util"]
+
+[tool.setuptools.package-data]
+"*" = ["*.yaml", "*.json"]
